@@ -99,6 +99,13 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
+        <widget class="QPushButton" name="Dodaj_Button">
+         <property name="text">
+          <string>Dodaj Wycene</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="Usun_Button">
          <property name="text">
           <string>Usun Wycene</string>

@@ -1,30 +1,32 @@
-#ifndef ZARZADZANIEKLIENTAMI_H
-#define ZARZADZANIEKLIENTAMI_H
+#ifndef ZARZADZANIESAMOCHODAMI_H
+#define ZARZADZANIESAMOCHODAMI_H
 
 #include <QWidget>
 #include <QtSql>
+
 namespace Ui {
-class ZarzadzanieKlientami;
+class ZarzadzanieSamochodami;
 }
 
-class ZarzadzanieKlientami : public QWidget
+class ZarzadzanieSamochodami : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit ZarzadzanieKlientami(QWidget *parent = nullptr);
-    ~ZarzadzanieKlientami();
+    explicit ZarzadzanieSamochodami(QWidget *parent = nullptr);
+    ~ZarzadzanieSamochodami();
     void ustawModel(QSqlQueryModel* model);
     void pobierzDane();
     void wyczyscDane();
+    QString Id_Samochodu;
+    QString Typ;
+    QString Rejestracja;
+    QString Rok;
+    QString Id_Modelu;
     QString Id_Klienta;
-    QString Imie;
-    QString Nazwisko;
-    QString Telefon;
 
 private:
-    Ui::ZarzadzanieKlientami *ui;
-
+    Ui::ZarzadzanieSamochodami *ui;
 private slots:
     void on_Dodaj_Button_clicked();
     void on_Edytuj_Button_clicked();
@@ -38,4 +40,5 @@ signals:
     void wroc();
 };
 
-#endif // ZARZADZANIEKLIENTAMI_H
+
+#endif // ZARZADZANIESAMOCHODAMI_H

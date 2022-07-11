@@ -20,6 +20,12 @@
 #include <raportekonomiczny.h>
 #include <harmonogram.h>
 #include <zarzadzanieczesciami.h>
+#include <zarzadzanieklientami.h>
+#include <zarzadzaniesamochodami.h>
+#include <zarzadzaniemodelami.h>
+#include <zarzadzanieprzegladami.h>
+#include <zarzadzanieuslugami.h>
+#include <zarzadzaniewycenami.h>
 #include <QObject>
 
 QT_BEGIN_NAMESPACE
@@ -37,18 +43,26 @@ public:
     int currentWidget;
 private slots:
     void zaloguj();
-    void edytuj_stan();
-    void panel_wyceny();
-    void Edycja_Stan_Zlecenia_Eksperta();
     void Wroc();
-    void Wyswietl_Zlecenia();
+    void Raport_Ekonomiczny();
+    void do_harmonogramu();
+
+    void edytuj_stan();
+    void Edycja_Stan_Zlecenia_Eksperta();
     void Wyswietl_Wyceny();
+    void usun_wycene_ekspert();
+    void edytuj_wycene_ekspert();
+    void dodaj_wycene_ekspert();
+    void Panel_Wyceny_Eksperta();
+
+    void Wyswietl_Zlecenia();
+    void Panel_Zlecen();
+    void dodaj_zlecenie();
+    void usun_zlecenie();
+
     void Panel_Pracownikow();
     void Panel_Typow_Pracownikow();
-    void Raport_Ekonomiczny();
     void Wyswietl_Pracownikow();
-    void usun_wycene();
-    void edytuj_wycene();
     void dodaj_pracownika();
     void usun_pracownika();
     void edytuj_pracownika();
@@ -56,11 +70,41 @@ private slots:
     void dodaj_typ_pracownika();
     void usun_typ_pracownika();
     void edytuj_typ_pracownika();
-    void Panel_Zlecen();
-    void dodaj_zlecenie();
-    void usun_zlecenie();
-    void do_harmonogramu();
+
+
     void Panel_Czesci();
+
+    void Panel_Klientow();
+    void Wyswietl_Klientow();
+    void dodaj_klienta();
+    void usun_klienta();
+    void edytuj_klienta();
+
+    void Panel_Samochodow();
+    void Wyswietl_Samochody();
+    void dodaj_samochod();
+    void usun_samochod();
+    void edytuj_samochod();
+
+    void Panel_Modeli();
+    void Wyswietl_Modele();
+    void dodaj_model();
+    void usun_model();
+
+    void Panel_Przegladow();
+    void Wyswietl_Przeglady();
+    void dodaj_przeglad();
+    void usun_przeglad();
+
+    void Panel_Uslug();
+    void Wyswietl_Uslugi();
+    void dodaj_usluge();
+    void usun_usluge();
+
+    void Panel_Wycen();
+    void dodaj_wycene_recep();
+    void edytuj_wycene_recep();
+    void usun_wycene_recep();
 
 private:
     Ui::MainWindow *ui;
@@ -78,6 +122,12 @@ private:
     ZarzadzanieZleceniami zarzZlc;
     Harmonogram harm;
     ZarzadzanieCzesciami zarzCzesc;
+    ZarzadzanieKlientami zarzKlient;
+    ZarzadzanieSamochodami zarzSamoch;
+    ZarzadzanieModelami zarzModel;
+    ZarzadzaniePrzegladami zarzPrzeg;
+    ZarzadzanieUslugami zarzUslug;
+    ZarzadzanieWycenami zarzWycen;
     QSqlDatabase mydb;
 };
 #endif // MAINWINDOW_H

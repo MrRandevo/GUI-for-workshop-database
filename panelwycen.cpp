@@ -34,6 +34,13 @@ void PanelWycen::on_Usun_Button_clicked()
     emit usun();
 }
 
+void PanelWycen::on_Dodaj_Button_clicked()
+{
+    pobierzDane();
+    wyczyscDane();
+    emit dodaj();
+}
+
 void PanelWycen::ustawModel(QSqlQueryModel *model)
 {
     ui->tablica->setModel(model);

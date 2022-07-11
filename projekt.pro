@@ -24,8 +24,13 @@ SOURCES += \
     raportekonomiczny.cpp \
     zarzadzanieczesciami.cpp \
     zarzadzanieklientami.cpp \
+    zarzadzaniemodelami.cpp \
     zarzadzaniepracownikami.cpp \
+    zarzadzanieprzegladami.cpp \
+    zarzadzaniesamochodami.cpp \
     zarzadzanietypamipracownikow.cpp \
+    zarzadzanieuslugami.cpp \
+    zarzadzaniewycenami.cpp \
     zarzadzaniezleceniami.cpp
 
 HEADERS += \
@@ -43,8 +48,13 @@ HEADERS += \
     raportekonomiczny.h \
     zarzadzanieczesciami.h \
     zarzadzanieklientami.h \
+    zarzadzaniemodelami.h \
     zarzadzaniepracownikami.h \
+    zarzadzanieprzegladami.h \
+    zarzadzaniesamochodami.h \
     zarzadzanietypamipracownikow.h \
+    zarzadzanieuslugami.h \
+    zarzadzaniewycenami.h \
     zarzadzaniezleceniami.h
 
 FORMS += \
@@ -62,8 +72,13 @@ FORMS += \
     raportekonomiczny.ui \
     zarzadzanieczesciami.ui \
     zarzadzanieklientami.ui \
+    zarzadzaniemodelami.ui \
     zarzadzaniepracownikami.ui \
+    zarzadzanieprzegladami.ui \
+    zarzadzaniesamochodami.ui \
     zarzadzanietypamipracownikow.ui \
+    zarzadzanieuslugami.ui \
+    zarzadzaniewycenami.ui \
     zarzadzaniezleceniami.ui
 
 # Default rules for deployment.

@@ -30,8 +30,10 @@ private slots:
     void on_Wroc_Button_clicked();
     void on_Edytuj_Button_clicked();
     void on_Usun_Button_clicked();
+    void on_Dodaj_Button_clicked();
 signals:
     void edytuj();
+    void dodaj();
     void wroc();
     void usun();
 
