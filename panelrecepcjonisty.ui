@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PanelRecepcjonisty</class>
+ <widget class="QWidget" name="PanelRecepcjonisty">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>27</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Panel Recepcjonisty</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Harmonogram_Button">
+     <property name="text">
+      <string>Harmonogram</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Zlecenie_Button">
+     <property name="text">
+      <string>Zarzadzanie zleceniami</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Klient_Button">
+     <property name="text">
+      <string>Zarzadzanie klientami</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Samochody_Button">
+     <property name="text">
+      <string>Zarzadzanie samochodami</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Model_Button">
+     <property name="text">
+      <string>Zarzadzanie modelami</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Usluga_Button">
+     <property name="text">
+      <string>Zarzadzenie uslugami</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Stanowisko_Button">
+     <property name="text">
+      <string>Zarzadzanie stanowiskami</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Przeglad_Button">
+     <property name="text">
+      <string>Zarzadzanie przegladami</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="Wycena_Button">
+     <property name="text">
+      <string>Zarzadzanie wycenami</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>zarzadzaniepracownikami</class>
+ <widget class="QWidget" name="zarzadzaniepracownikami">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="5">
+    <widget class="QTableView" name="tablica"/>
+   </item>
+   <item row="1" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="IdPracownika">
+       <property name="text">
+        <string>Id_Pracownika</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="IdPracownika_Line"/>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="PESEL">
+       <property name="text">
+        <string>PESEL</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="PESEL_Line"/>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="2" colspan="2">
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QLabel" name="Haslo">
+       <property name="text">
+        <string>Hasło</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="Haslo_Line"/>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="4">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="Imie">
+       <property name="text">
+        <string>Imie</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="Imie_Line"/>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="Nazwisko">
+       <property name="text">
+        <string>Nazwisko</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="Nazwisko_Line"/>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QLabel" name="IdTypu">
+       <property name="text">
+        <string>Typ Pracownika</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="TypPracownikaBox">
+       <item>
+        <property name="text">
+         <string>Brak</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Blacharz</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Lakiernik</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Mechanik</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Sprzątacz</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Inne</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="3" colspan="2">
+    <layout class="QVBoxLayout" name="verticalLayout_7">
+     <item>
+      <widget class="QLabel" name="Posada">
+       <property name="text">
+        <string>Posada</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="PosadaBox">
+       <item>
+        <property name="text">
+         <string>Szef</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Pracownik Warsztatowy</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Magazynier</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Recepcjonista</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Ekspert</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="5">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="Wroc_Button">
+       <property name="text">
+        <string>Wróć</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Dodaj_Button">
+       <property name="text">
+        <string>Dodaj Pracownika</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Usun_Button">
+       <property name="text">
+        <string>Usuń Pracownika</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Edytuj_Button">
+       <property name="text">
+        <string>Edytuj Dane</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
