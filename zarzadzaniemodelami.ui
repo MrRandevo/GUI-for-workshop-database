@@ -58,7 +58,7 @@
        <item>
         <widget class="QLabel" name="Model_Label">
          <property name="text">
-          <string>ID Modelu</string>
+          <string>Nazwa Modelu</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>

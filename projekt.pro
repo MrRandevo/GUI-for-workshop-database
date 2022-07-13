@@ -23,6 +23,7 @@ SOURCES += \
     panelwycen.cpp \
     raportekonomiczny.cpp \
     zarzadzanieczesciami.cpp \
+    zarzadzaniedostepnoscia.cpp \
     zarzadzanieklientami.cpp \
     zarzadzaniemodelami.cpp \
     zarzadzaniepracownikami.cpp \
@@ -47,6 +48,7 @@ HEADERS += \
     panelwycen.h \
     raportekonomiczny.h \
     zarzadzanieczesciami.h \
+    zarzadzaniedostepnoscia.h \
     zarzadzanieklientami.h \
     zarzadzaniemodelami.h \
     zarzadzaniepracownikami.h \
@@ -71,6 +73,7 @@ FORMS += \
     panelwycen.ui \
     raportekonomiczny.ui \
     zarzadzanieczesciami.ui \
+    zarzadzaniedostepnoscia.ui \
     zarzadzanieklientami.ui \
     zarzadzaniemodelami.ui \
     zarzadzaniepracownikami.ui \

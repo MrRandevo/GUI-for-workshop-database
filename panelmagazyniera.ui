@@ -31,6 +31,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QPushButton" name="Dostepnosc_Button">
+     <property name="text">
+      <string>Dostępność części</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="Harmonogram_Button">
      <property name="text">
       <string>Zobacz Harmonogram</string>

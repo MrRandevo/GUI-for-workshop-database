@@ -21,9 +21,11 @@ private:
 private slots:
     void on_Czesci_Button_clicked();
     void on_Harmonogram_Button_clicked();
+    void on_Dostepnosc_Button_clicked();
 signals:
     void czesci();
     void harmonogram();
+    void dostepnosc();
 };
 
 #endif // PANELMAGAZYNIERA_H

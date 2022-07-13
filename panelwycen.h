@@ -21,7 +21,7 @@ public:
     QString ID_Wyceny;
     QString Opis_Eksperta;
     QString Cena;
-
+    QString ID_Modelu;
 
 private:
     Ui::PanelWycen *ui;

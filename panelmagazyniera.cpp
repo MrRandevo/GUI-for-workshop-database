@@ -22,3 +22,8 @@ void PanelMagazyniera::on_Harmonogram_Button_clicked()
 {
     emit harmonogram();
 }
+
+void PanelMagazyniera::on_Dostepnosc_Button_clicked()
+{
+    emit dostepnosc();
+}

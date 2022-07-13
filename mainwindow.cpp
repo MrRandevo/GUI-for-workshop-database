@@ -67,6 +67,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(&panMag, SIGNAL(harmonogram()),this,SLOT(do_harmonogramu()));
     connect(&panMag, SIGNAL(czesci()),this,SLOT(Panel_Czesci()));
+    connect(&panMag, SIGNAL(czesci()),this,SLOT(Wyswietl_Czesci()));
+    connect(&panMag, SIGNAL(dostepnosc()),this,SLOT(Panel_Dostepnosci()));
+    connect(&panMag, SIGNAL(dostepnosc()),this,SLOT(Wyswietl_Zlecenia()));
 
     connect(&zarzKlient, SIGNAL(wroc()),this,SLOT(Wroc()));
     connect(&zarzKlient, SIGNAL(dodaj()),this,SLOT(dodaj_klienta()));
@@ -94,6 +97,15 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&zarzWycen, SIGNAL(dodaj()),this,SLOT(dodaj_wycene_recep()));
     connect(&zarzWycen, SIGNAL(edytuj()),this,SLOT(edytuj_wycene_recep()));
     connect(&zarzWycen, SIGNAL(usun()),this,SLOT(usun_wycene_recep()));
+
+    connect(&zarzCzesc, SIGNAL(wroc()),this,SLOT(Wroc()));
+    connect(&zarzCzesc, SIGNAL(dodaj()),this,SLOT(dodaj_czesci()));
+    connect(&zarzCzesc, SIGNAL(edytuj()),this,SLOT(edytuj_czesci()));
+    connect(&zarzCzesc, SIGNAL(usun()),this,SLOT(usun_czesci()));
+
+    connect(&zarzDost, SIGNAL(wroc()),this,SLOT(Wroc()));
+    connect(&zarzDost, SIGNAL(edytuj()),this,SLOT(edytuj_dostepnosc()));
+
 
     mydb= QSqlDatabase::addDatabase("QMYSQL","MyConnect");
     mydb.setHostName("localhost");
@@ -126,6 +138,7 @@ MainWindow::MainWindow(QWidget *parent)
      ui->kontroler->addWidget(&zarzPrzeg); //19
      ui->kontroler->addWidget(&zarzUslug); //20
      ui->kontroler->addWidget(&zarzWycen); //21
+     ui->kontroler->addWidget(&zarzDost); //22
      ui->kontroler->setCurrentIndex(2);
 
 }
@@ -203,9 +216,6 @@ void MainWindow::Panel_Wyceny_Eksperta()
 
 void MainWindow::Edycja_Stan_Zlecenia_Eksperta()
 {
-   // QString Id_Zlecenia = edtStanZl.ID_Zlecenia;
-    //QString Stan_Zlecenia = edtStanZl.Stan_Zlecenia;
-
     QSqlQuery q_rec(QSqlDatabase::database("MyConnect"));
     q_rec.prepare("Update Zlecenie SET Stan_Zlecenia='"+edtStanZl.Stan_Zlecenia+"' WHERE Id_Zlecenia ="+edtStanZl.ID_Zlecenia+";");
     q_rec.exec();
@@ -226,12 +236,9 @@ void MainWindow::Wyswietl_Zlecenia()
    query->prepare("SELECT * FROM Zlecenie;");
    query->exec();
    model->setQuery(*query);
-
+    zarzDost.ustawModel(model);
    zarzZlc.ustawModel(model);
-
    edtStanZl.ustawModel(model);
-
-
 }
 
 void MainWindow::Wyswietl_Wyceny()
@@ -268,7 +275,6 @@ void MainWindow::Wyswietl_Pracownikow()
 
 }
 
-
 void MainWindow::usun_wycene_ekspert()
 {
     QSqlQuery q_rec(QSqlDatabase::database("MyConnect"));
@@ -287,12 +293,30 @@ void MainWindow::edytuj_wycene_ekspert()
 
 void MainWindow::dodaj_wycene_ekspert()
 {
-    //
-    //
-    //
-    //
-    //
-    //
+    QStringList tempList = panWcn.ID_Modelu.split(QRegularExpression("\\s+"));
+
+    QString temp1 = tempList[0];
+    QString temp2 = tempList[1];
+    QSqlQuery querys(QSqlDatabase::database("MyConnect"));
+    querys.prepare("SELECT * FROM model WHERE Nazwa_Modelu='"+temp2+"' AND Nazwa_Marki='"+temp1+"';");
+    querys.exec();
+
+    if(querys.next())
+    {
+        panWcn.ID_Modelu = querys.value(0).toString();
+    }
+
+    QSqlQuery q_rec(QSqlDatabase::database("MyConnect"));
+
+    q_rec.prepare("INSERT INTO Wycena(Id_Wyceny,Cena,Id_Modelu,Opis_Eksperta)"
+                   "VALUES(:Id_Wyceny,:Cena,:Id_Modelu,:Opis_Eksperta)");
+    q_rec.bindValue(":Id_Wyceny",panWcn.ID_Wyceny);
+    q_rec.bindValue(":Cena",panWcn.Cena);
+    q_rec.bindValue(":Id_Modelu",panWcn.ID_Modelu);
+    q_rec.bindValue(":Opis_Eksperta",panWcn.Opis_Eksperta);
+    q_rec.exec();
+
+    Wyswietl_Wyceny();
 
 }
 
@@ -453,6 +477,60 @@ void MainWindow::Panel_Czesci()
 {
     currentWidget = ui->kontroler->currentIndex();
     ui->kontroler->setCurrentIndex(15);
+}
+
+void MainWindow::Wyswietl_Czesci()
+{
+    QSqlQueryModel* model = new QSqlQueryModel();
+    QSqlQuery* query  = new QSqlQuery(mydb);
+    query->prepare("SELECT * FROM Czesci_Materialy;");
+    query->exec();
+    model->setQuery(*query);
+    zarzCzesc.ustawModel(model);
+}
+
+void MainWindow::dodaj_czesci()
+{
+    zarzCzesc.Id_Typu_Czesci = zarzCzesc.Id_Typu_Czesci.split(QRegularExpression("\\s+"))[0];
+
+    QStringList tempList = zarzCzesc.Id_Modelu.split(QRegularExpression("\\s+"));
+    QString temp1 = tempList[0];
+    QString temp2 = tempList[1];
+    QSqlQuery querys(QSqlDatabase::database("MyConnect"));
+    querys.prepare("SELECT * FROM model WHERE Nazwa_Modelu='"+temp2+"' AND Nazwa_Marki='"+temp1+"';");
+    querys.exec();
+    if(querys.next())
+    {
+        zarzCzesc.Id_Modelu = querys.value(0).toString();
+    }
+    QSqlQuery q_rec(QSqlDatabase::database("MyConnect"));
+
+    qDebug()<<zarzCzesc.Id_Typu_Czesci <<zarzCzesc.Id_Modelu;
+
+    q_rec.prepare("INSERT INTO Czesci_Materialy(Id_Czesci,Ilosc,Id_Typu_Czesci,Id_Modelu)"
+                   "VALUES(:Id_Czesci,:Ilosc,:Id_Typu_Czesci,:Id_Modelu)");
+    q_rec.bindValue(":Id_Czesci",zarzCzesc.Id_Czesci);
+    q_rec.bindValue(":Ilosc",zarzCzesc.Ilosc);
+    q_rec.bindValue(":Id_Typu_Czesci",zarzCzesc.Id_Typu_Czesci);
+    q_rec.bindValue(":Id_Modelu",zarzCzesc.Id_Modelu);
+    q_rec.exec();
+    Wyswietl_Czesci();
+}
+
+void MainWindow::edytuj_czesci()
+{
+    QSqlQuery q_rec(QSqlDatabase::database("MyConnect"));
+    q_rec.prepare("Update Czesci_Materialy SET Ilosc='"+zarzCzesc.Ilosc+"'WHERE Id_Czesci='"+zarzCzesc.Id_Czesci+"' ;");
+    q_rec.exec();
+    Wyswietl_Czesci();
+}
+
+void MainWindow::usun_czesci()
+{
+    QSqlQuery q_rec(QSqlDatabase::database("MyConnect"));
+    q_rec.prepare("DELETE FROM Czesci_Materialy WHERE Id_Czesci='"+zarzCzesc.Id_Czesci+"';");
+    q_rec.exec();
+    Wyswietl_Czesci();
 }
 
 void MainWindow::Panel_Klientow()
@@ -758,6 +836,22 @@ void MainWindow::usun_wycene_recep()
     q_rec.prepare("DELETE FROM Wycena WHERE Id_Wyceny='"+zarzWycen.Id_Wyceny+"';");
     q_rec.exec();
     Wyswietl_Wyceny();
+}
+
+void MainWindow::Panel_Dostepnosci()
+{
+    currentWidget = ui->kontroler->currentIndex();
+    ui->kontroler->setCurrentIndex(22);
+}
+
+void MainWindow::edytuj_dostepnosc()
+{
+    qDebug()<<zarzDost.Dostepnosc<<zarzDost.Id_Zlecenia;
+    QSqlQuery q_recw(QSqlDatabase::database("MyConnect"));
+    q_recw.prepare("Update Zlecenie SET Dostepnosc='"+zarzDost.Dostepnosc+"' WHERE Id_Zlecenia='"+zarzDost.Id_Zlecenia+"' ;");
+    q_recw.exec();
+
+    Wyswietl_Zlecenia();
 }
 
 

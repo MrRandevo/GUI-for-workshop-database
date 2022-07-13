@@ -45,6 +45,16 @@ void PanelWycen::ustawModel(QSqlQueryModel *model)
 {
     ui->tablica->setModel(model);
     ui->tablica->resizeColumnsToContents();
+    ui->Model_Box->clear();
+
+    QSqlQuery quer(QSqlDatabase::database("MyConnect"));
+    quer.prepare("SELECT Nazwa_Marki, Nazwa_Modelu FROM model;");
+    quer.exec();
+    ui->Model_Box->addItem("");
+    while(quer.next())
+    {
+        ui->Model_Box->addItem(quer.value(0).toString()+" "+quer.value(1).toString());
+    }
 }
 
 void PanelWycen::pobierzDane()
@@ -52,6 +62,7 @@ void PanelWycen::pobierzDane()
     ID_Wyceny = ui->ID_Line->text();
     Opis_Eksperta = ui->Opis_Line->text();
     Cena = ui->Cena_Line->text();
+    ID_Modelu = ui->Model_Box->currentText();
 }
 
 void PanelWycen::wyczyscDane()

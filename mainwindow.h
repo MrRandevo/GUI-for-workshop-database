@@ -26,6 +26,7 @@
 #include <zarzadzanieprzegladami.h>
 #include <zarzadzanieuslugami.h>
 #include <zarzadzaniewycenami.h>
+#include <zarzadzaniedostepnoscia.h>
 #include <QObject>
 
 QT_BEGIN_NAMESPACE
@@ -73,6 +74,10 @@ private slots:
 
 
     void Panel_Czesci();
+    void Wyswietl_Czesci();
+    void dodaj_czesci();
+    void edytuj_czesci();
+    void usun_czesci();
 
     void Panel_Klientow();
     void Wyswietl_Klientow();
@@ -106,6 +111,9 @@ private slots:
     void edytuj_wycene_recep();
     void usun_wycene_recep();
 
+    void Panel_Dostepnosci();
+    void edytuj_dostepnosc();
+
 private:
     Ui::MainWindow *ui;
     Logowanie login;
@@ -128,6 +136,7 @@ private:
     ZarzadzaniePrzegladami zarzPrzeg;
     ZarzadzanieUslugami zarzUslug;
     ZarzadzanieWycenami zarzWycen;
+    ZarzadzanieDostepnoscia zarzDost;
     QSqlDatabase mydb;
 };
 #endif // MAINWINDOW_H
